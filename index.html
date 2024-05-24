@@ -1,0 +1,557 @@
+<!doctype html>
+<html lang="ru">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"
+    integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+  <title>Boss-Beer. Магазины разливных напитков под ключ.</title>
+
+  <!-- Шрифт логотипа -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Grenze+Gotisch:wght@100..900&display=swap" rel="stylesheet">
+  <!-- Шрифт логотипа -->
+
+  <!-- Шрифт страницы -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+    rel="stylesheet">
+  <!-- Шрифт страницы -->
+
+  <!-- Стили Алерта -->
+  <link rel="stylesheet" href="css/sweetalert2.min.css">
+  <!-- Стили Алерта -->
+
+  <style>
+    body {
+      font-family: Montserrat, Arial, sans-serif;
+    }
+
+    .navbar {
+      position: fixed;
+      z-index: 100;
+      background-color: rgba(15, 31, 51, 0.877);
+      padding-top: 0;
+      padding-bottom: 0;
+      width: 100%;
+      opacity: 0;
+    }
+
+    .navbar-brand {
+      margin: 0;
+      padding: 0;
+      position: relative;
+    }
+
+    .navbar-brand-text {
+      font-family: "Grenze Gotisch", Arial, sans-serif;
+      color: #fd792e;
+    }
+
+    .gallery-img {
+      margin-top: 1rem;
+      transition: 0.5s;
+    }
+
+    .gallery-img:hover {
+      transform: scale(1.1);
+    }
+
+
+    h2 {
+      text-align: center;
+      margin: 2rem;
+      color: rgb(15, 31, 51);
+    }
+
+    .about {
+      margin-top: 1rem;
+    }
+
+    .services {
+      margin-top: 1rem;
+    }
+
+    .card-group {
+      justify-content: space-around;
+    }
+
+    .equipment {
+      margin-top: 1rem;
+      background-color: rgb(15, 31, 51);
+      padding: 1rem;
+    }
+
+    .navbar-collapse {
+      justify-content: space-evenly;
+      margin-left: 20rem;
+    }
+
+    .nav-text {
+      color: #fd792e;
+    }
+
+    .btn-primary {
+      margin-left: 15rem;
+      background-image: linear-gradient(-180deg, #FF7E31, #E62C03);
+      border-radius: 6px;
+      box-shadow: rgba(0, 0, 0, 0.1) 0 2px 4px;
+      color: #FFFFFF;
+      cursor: pointer;
+      display: inline-block;
+      font-family: Inter, -apple-system, system-ui, Roboto, "Helvetica Neue", Arial, sans-serif;
+      height: 40px;
+      line-height: 40px;
+      outline: 0;
+      overflow: hidden;
+      padding: 0 20px;
+      pointer-events: auto;
+      position: relative;
+      text-align: center;
+      user-select: none;
+      -webkit-user-select: none;
+      vertical-align: top;
+      white-space: nowrap;
+      width: 20%;
+      z-index: 9;
+      border: 0;
+      transition: box-shadow .2s;
+    }
+
+    .button-42:hover {
+      box-shadow: rgba(253, 76, 0, 0.5) 0 3px 8px;
+    }
+
+    .send-message {
+      background-image: linear-gradient(-180deg, #FF7E31, #e62c03);
+      border-radius: 6px;
+      box-shadow: rgba(0, 0, 0, 0.1) 0 2px 4px;
+      color: #FFFFFF;
+      cursor: pointer;
+      display: inline-block;
+      font-family: Inter, -apple-system, system-ui, Roboto, "Helvetica Neue", Arial, sans-serif;
+      height: 40px;
+      line-height: 40px;
+      outline: 0;
+      overflow: hidden;
+      padding: 0 20px;
+      pointer-events: auto;
+      position: relative;
+      text-align: center;
+      user-select: none;
+      -webkit-user-select: none;
+      vertical-align: top;
+      white-space: nowrap;
+      width: 100%;
+      border: 0;
+      transition: box-shadow .2s;
+    }
+
+    .send-message:hover {
+      box-shadow: rgba(253, 76, 0, 0.5) 0 3px 8px;
+    }
+
+    .nav-item {
+      margin-right: 2rem;
+    }
+
+    .equipment {
+      color: rgb(243, 249, 251);
+      padding: 3rem;
+      text-align: center;
+    }
+
+    .equipment-text {
+      color: rgb(243, 249, 251);
+      margin-top: 0;
+    }
+
+    .equipment-btn {
+      margin-left: 0;
+      display: inline-block;
+
+    }
+
+    .contact {
+      margin-top: 1rem;
+    }
+
+    #footer {
+      background-color: rgb(15, 31, 51);
+      margin-top: 1rem;
+      color: rgb(243, 249, 251);
+      padding: 1rem;
+      text-align: center;
+    }
+
+    .footer-logo {
+      margin: 1rem;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- header start -->
+  <nav class="navbar navbar-expand-lg navbar" onmouseover="showNavbar(navbar)" onmouseout="hideNavbar(navbar)">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03"
+      aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Переключатель навигации">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div>
+      <a class="navbar-brand navbar-li" href="#hero">
+        <h2 class="navbar-brand-text">BOSS-BEER</h2>
+      </a>
+    </div>
+    <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+      <ul class="navbar-nav navbar-ul">
+        <li class="nav-item">
+          <a class="nav-link" href="#hero"><span class="nav-text">Главная</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#about"><span class="nav-text">О нас</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#gallery"><span class="nav-text">Наши работы</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#services"><span class="nav-text">Услуги</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#equipment"><span class="nav-text">Оборудование</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#contact"><span class="nav-text">Контакты</span></a>
+        </li>
+      </ul>
+      <a href="#contact"><button type="submit" class="btn btn-primary btn-sm equipment-btn"
+          style="width: 100%;">Написать нам</button></a>
+    </div>
+  </nav>
+  <!-- header end -->
+  <!-- main content start-->
+  <!-- hero start -->
+  <div id="carouselExampleCaptions" class="carousel slide hero" data-ride="carousel">
+    <a name="hero"></a>
+    <ol class="carousel-indicators">
+      <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active" data-interval="10000"></li>
+      <li data-target="#carouselExampleCaptions" data-slide-to="1"></li>
+      <li data-target="#carouselExampleCaptions" data-slide-to="2"></li>
+    </ol>
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img src="img/20191225_182325.webp" class="d-block w-100 " alt="...">
+        <div class="carousel-caption d-none d-md-block">
+          <h5>Boss-beer - это</h5>
+          <p> Более 8 лет на рынке, более 100 реализованных проектов.</p>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <img src="img/20191225_182418.webp" class="d-block w-100" alt="...">
+        <div class="carousel-caption d-none d-md-block">
+          <h5>Boss-beer - это</h5>
+          <p>Индивидуальный подход к каждому клиенту.</p>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <img src="img/54215a9c30573bdfb96bc1010005485101.webp" class="d-block w-100" alt="...">
+        <div class="carousel-caption d-none d-md-block">
+          <h5>Boss-beer - это</h5>
+          <p>Только качественные материалы и оборудование.</p>
+        </div>
+      </div>
+    </div>
+    <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="sr-only">Предыдущий</span>
+    </a>
+    <a class="carousel-control-next" href="#carouselExampleCaptions" role="button" data-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="sr-only">Следующий</span>
+    </a>
+  </div>
+  <!-- hero end -->
+  <!-- about start -->
+  <div class="container-fluid about">
+    <div class="row"><a name="about"></a>
+      <div class="col-lg-6 d-flex flex-column justify-content-center align-items-stretch about-content">
+        <div class="content">
+          <h2>О нас</h2>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+            dolore magna aliqua. Duis aute irure dolor in reprehenderit
+          </p>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+            dolore
+            magna aliqua.
+          </p>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+            dolore magna aliqua. Duis aute irure dolor in reprehenderit
+          </p>
+          <ul>
+            <li><i class="bx bx-check-double"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat.</li>
+            <li><i class="bx bx-check-double"></i> Duis aute irure dolor in reprehenderit in voluptate velit.</li>
+            <li><i class="bx bx-check-double"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
+              irure dolor in reprehenderit in voluptate trideta storacalaperda mastiro dolore eu fugiat nulla pariatur.
+            </li>
+          </ul>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+            dolore magna aliqua. Duis aute irure dolor in reprehenderit
+          </p>
+          <p>
+            Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
+            velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+            culpa qui officia deserunt mollit anim id est laborum
+          </p>
+        </div>
+        <a href="#contact"><button type="submit" class="btn btn-primary btn-sm equipment-btn"
+            style="width: 100%;">Написать нам</button></a>
+      </div>
+      <div class="col-lg-6 about-img">
+        <img src="img/15672490_865471140259763_8973713581630754901_n.webp" alt="" class="img-fluid">
+      </div>
+    </div>
+
+  </div>
+  <!-- about end -->
+  <!-- gallery start -->
+  <div class="container-fluid gallery"><a name="gallery"></a>
+    <h2>Наши работы</h2>
+    <div class="row">
+      <div class="col-lg-3 col-md-4 gallery-img">
+        <div class="gallery-item">
+          <a href="img/20171024_112919.webp">
+            <img src="img/20171024_112919.webp" alt="" class="img-fluid">
+          </a>
+        </div>
+      </div>
+
+      <div class="col-lg-3 col-md-4 gallery-img">
+        <div class="gallery-item">
+          <a href="img/20171024_112919.webp" alt="" class="img-fluid">
+            <img src="img/20171024_112919.webp" alt="" class="img-fluid">
+          </a>
+        </div>
+      </div>
+
+      <div class="col-lg-3 col-md-4 gallery-img">
+        <div class="gallery-item">
+          <a href="img/20171024_112919.webp"">
+            <img src=" img/20171024_112919.webp" alt="" class="img-fluid">
+          </a>
+        </div>
+      </div>
+
+      <div class="col-lg-3 col-md-4 gallery-img">
+        <div class="gallery-item">
+          <a href="img/20171024_112919.webp">
+            <img src="img/20171024_112919.webp" alt="" class="img-fluid">
+          </a>
+        </div>
+      </div>
+
+      <div class="col-lg-3 col-md-4 gallery-img">
+        <div class="gallery-item">
+          <a href="img/20171024_112919.webp">
+            <img src="img/20171024_112919.webp" alt="" class="img-fluid">
+          </a>
+        </div>
+      </div>
+
+      <div class="col-lg-3 col-md-4 gallery-img">
+        <div class="gallery-item">
+          <a href="img/20171024_112919.webp">
+            <img src="img/20171024_112919.webp" alt="" class="img-fluid">
+          </a>
+        </div>
+      </div>
+
+      <div class="col-lg-3 col-md-4 gallery-img">
+        <div class="gallery-item">
+          <a href="img/20171024_112919.webp">
+            <img src="img/20171024_112919.webp" alt="" class="img-fluid">
+          </a>
+        </div>
+      </div>
+
+      <div class="col-lg-3 col-md-4 gallery-img">
+        <div class="gallery-item">
+          <a href="img/20171024_112919.webp">
+            <img src="img/20171024_112919.webp" alt="" class="img-fluid">
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- gallery end -->
+  <!-- services start -->
+  <div class="container-fluid services"><a name="services"></a>
+
+    <h2>Услуги</h2>
+
+    <div class="row card-group">
+      <div class="col-lg-2 card">
+        <div class="card-body">
+          <h5 class="card-title">Магазин разливного пива под ключ</h5>
+          <p class="card-text">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Accusantium ipsa nisi aliquam
+            provident praesentium laborum hic quia! Facere eos ut fugit, numquam ducimus incidunt molestias harum.
+            Quis pariatur beatae velit!</p>
+          <a href="#contact" class="card-link">Заказать услугу</a>
+        </div>
+      </div>
+
+      <div class="col-lg-2 card">
+        <div class="card-body">
+          <h5 class="card-title">Бар, шаурма, стритфуд под ключ</h5>
+          <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores, similique odio
+            pariatur laudantium eos magnam unde quisquam reprehenderit adipisci numquam quas consectetur accusamus
+            minus, ullam iure inventore a quod corrupti?</p>
+          <a href="#contact" class="card-link">Заказать услугу</a>
+        </div>
+      </div>
+
+      <div class="col-lg-2 card">
+        <div class="card-body">
+          <h5 class="card-title">Прилавки, холодильные камеры, стеллажи</h5>
+          <p class="card-text">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Temporibus aliquam
+            exercitationem sequi deserunt similique tempora unde officia totam dolore sint sunt debitis quam odit
+            fugit, necessitatibus repudiandae facere blanditiis placeat.</p>
+          <a href="#contact" class="card-link">Заказать услугу</a>
+        </div>
+      </div>
+
+      <div class="col-lg-2 card">
+        <div class="card-body">
+          <h5 class="card-title">Обучение персонала</h5>
+          <p class="card-text">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Cumque sapiente officia nulla
+            unde. Magni, ratione sit officiis quo at recusandae consectetur voluptatibus dolorum aut dicta repellendus
+            perferendis ipsum est hic!</p>
+          <a href="#contact" class="card-link">Заказать услугу</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- services end -->
+  <!-- equipment start -->
+  <div class="equipment row-col-12"><a name="equipment"></a>
+    <h2 class="equipment-text">Оборудование</h2>
+    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptas, laborum doloribus! Ab perspiciatis qui
+      porro
+      facere, temporibus repellendus deleniti praesentium, nisi neque adipisci distinctio ipsam? Distinctio nulla aut
+      dolores eligendi!Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptas, laborum doloribus! Ab
+      perspiciatis qui
+      porro
+      facere, temporibus repellendus deleniti praesentium, nisi neque adipisci distinctio ipsam? Distinctio nulla aut
+      dolores eligendi!</p>
+    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptas, laborum doloribus! Ab perspiciatis qui
+      porro
+      facere, temporibus repellendus deleniti praesentium, nisi neque adipisci distinctio ipsam? Distinctio nulla aut
+      dolores eligendi!Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptas, laborum doloribus! Ab
+      perspiciatis qui
+      porro
+      facere, temporibus repellendus deleniti praesentium, nisi neque adipisci distinctio ipsam? Distinctio nulla aut
+      dolores eligendi</p>
+    <a href="#contact"><button type="submit" class="btn btn-primary btn-sm equipment-btn" style="width: 20%;">Написать
+        нам</button></a>
+  </div>
+  <!-- equipment end -->
+  <!--  contact start -->
+  <div class="container-fluid contact"><a name="contact"></a>
+    <div class="row">
+      <div class="col-6">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2240.061494125381!2d37.351355375989456!3d55.844247484945086!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46b547043d19e29f%3A0x84ecdc06f14bfec6!2z0JTRg9Cx0YDQsNCy0L3QsNGPINGD0LsuLCA0MCDQutC-0YDQv9GD0YEgMSwg0JzQvtGB0LrQstCwLCAxMjUzNjg!5e0!3m2!1sru!2sru!4v1716447114355!5m2!1sru!2sru"
+          width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+      <div class="col-6">
+        <h4>Напишите, и мы свяжемся удобным вам способом</h4>
+        <form action="php/obr.php" method="POST" onsubmit="sendForm(this); return false;" id="feedback">
+          <div class="form-group">
+            <label for="name">Ваше имя:</label>
+            <input type="name" name="name" class="form-control" id="name" placeholder="Name">
+          </div>
+          <div class="form-group">
+
+            <div class="container" hidden>
+
+              <div class="alert alert-success" role="alert">
+                <h4 class="alert-heading">Далеко-далеко</h4>
+                <p>Далеко-далеко за словесными горами в стране гласных и согласных живут рыбные тексты. Вдали от всех
+                  живут они в буквенных домах на берегу Семантика большого языкового океана.</p>
+                <hr>
+                <p class="mb-0">Маленький ручеек Даль журчит по всей стране и обеспечивает ее всеми необходимыми
+                  правилами.</p>
+              </div>
+
+            </div>
+
+            <label for="email1">E-mail:</label>
+            <input type="email" name="email" class="form-control" id="email1" placeholder="Email">
+          </div>
+          <div class="form-group">
+            <label for="phone">Номер телефона:</label>
+            <input type="phone" name="phone" class="form-control" id="phone" placeholder="Phone">
+          </div>
+          <div class="form-group">
+            <label for="message">Сообщение:</label>
+            <textarea class="form-control" name="message" rows="3"></textarea>
+          </div>
+          <button type="submit" class="btn btn-info send-message">Отправить сообщение</button>
+        </form>
+      </div>
+    </div>
+  </div>
+  <!--  contact end -->
+  <!-- main content end-->
+  <!-- footer start -->
+  <footer id="footer">
+    <a href="#">
+      <h2 class="navbar-brand-text footer-logo">BOSS-BEER</h2>
+    </a>
+    <p>Et aut eum quis fuga eos sunt ipsa nihil. Labore corporis magni eligendi fuga maxime saepe commodi placeat.</p>
+    <div class="copyright">
+      © Copyright <span>BOSS-BEER</span>. All Rights Reserved
+    </div>
+    <div class="credits">
+      Created by <a href="https://vk.com/lyulyashe4ka">Zelenova</a>
+    </div>
+
+  </footer>
+  <!-- footer end -->
+
+  <script>
+    let navbar = document.querySelector(".navbar");
+
+    function showNavbar(navbar) {
+      document.querySelector(".navbar").style.opacity = "1";
+    }
+    function hideNavbar(navbar) {
+      document.querySelector(".navbar").style.opacity = "0";
+    }
+
+    async function sendForm(form) {
+      let response = await fetch("php/obr.php", {
+        method: "POST",
+        body: new FormData(form),
+      });
+      if (response.status === 200) {
+        Swal.fire("Спасибо! Свяжемся с вами в течение 15 минут!");
+      }
+    }
+  </script>
+  <script src="js/sweetalert2.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
+    integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF"
+    crossorigin="anonymous"></script>
+</body>
+
+</html>
